@@ -1,6 +1,6 @@
 # springboot-sti
 FROM openshift/base-centos7
-MAINTAINER Udo Urbantschitsch <udo@cloudwerkstatt.com>
+MAINTAINER Matej Ristic <matej.ristic@cloudwerkstatt.com>
 
 # Install build tools on top of base image
 # Java jdk 8, Maven 3.3, Gradle 2.6
@@ -38,8 +38,8 @@ LABEL io.k8s.description="Platform for building Spring Boot applications with ma
 # COPY ./<builder_folder>/ /opt/openshift/
 # COPY Additional files,configurations that we want to ship by default, like a default setting.xml
 
-LABEL io.openshift.s2i.scripts-url=image:///usr/local/sti
-#COPY ./sti/bin/ /usr/local/sti
+LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
+COPY ./.s2i/bin/ /usr/local/s2i
 
 RUN chown -R 1001:1001 /opt/openshift
 
